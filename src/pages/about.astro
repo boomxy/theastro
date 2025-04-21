@@ -17,7 +17,9 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 const happy = true;
 const finished = false;
 const goal = 3;
-const skillColor = "navy"; // 0. 必须在这里定义变量 （关联下边的 2.3）
+const skillColor = "navy"; // 0. 必须在这里定义变量 （关联下边的 2-3）
+const fontWeight = "bold"; // 0. 必须在这里定义变量 （关联下边的 2-3））
+const textCase = "uppercase"; // 0. 必须在这里定义变量 （关联下边的 2-3）
 ---
 
 <Layout>
@@ -60,7 +62,7 @@ const skillColor = "navy"; // 0. 必须在这里定义变量 （关联下边的 
     </main>
 </Layout>
 
-<style define:vars={{skillColor}}>  // 1. 必须在这里定义变量
+<style define:vars={{skillColor, fontWeight, textCase}}>  // 1. 必须在这里定义变量
 
     h1 {
       color: purple;
@@ -69,6 +71,7 @@ const skillColor = "navy"; // 0. 必须在这里定义变量 （关联下边的 
     .skill {
       color: green;
       color: var(--skillColor); // 2. 才能在这里使用变量，覆盖了上边的 color: green;
-      font-weight: bold;
+      font-weight: var(--fontWeight); // 2. 才能在这里使用变量，覆盖了上边的 font-weight: bold;
+      text-transform: var(--textCase); // 2. 才能在这里使用变量，覆盖了上边的 text-transform: uppercase;
     }
   </style>
