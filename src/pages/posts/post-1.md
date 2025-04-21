@@ -10,7 +10,7 @@ tags: ["astro", "blogging", "learning in public"]
 ---
 # 我的第一篇博客
 
-Published on: 2022-07-01
+发布日期: 2025-04-21
 
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
 
