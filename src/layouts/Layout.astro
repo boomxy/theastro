@@ -2,10 +2,9 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
-import '../styles/global.css'; // 导入全局样式表
+import "../styles/global.css"; // 导入全局样式表
 
 // import Navigation from "../components/Navigation.astro";
-
 ---
 
 <!doctype html>
@@ -18,12 +17,19 @@ import '../styles/global.css'; // 导入全局样式表
 		<title>Astro Basics</title>
 	</head>
 	<body>
-			<!-- <Navigation /> // 被 Header 取代 Components   --> 
+		<!-- <Navigation /> // 被 Header 取代 Components   -->
 		<Header />
 		<slot />
-		
-		<Footer /> <!-- Components -->
-		
+
+		<Footer />
+		<!-- Components -->
+		<script>
+			// document.querySelector(".hamburger")?.addEventListener("click", () => {
+			// 	document.querySelector(".nav-links")?.classList.toggle("expanded");
+			// });
+			// 移动端导航栏点击事件
+			import "../scripts/menu.js";
+		</script>
 	</body>
 </html>
 
