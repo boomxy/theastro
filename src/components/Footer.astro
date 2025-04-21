@@ -1,0 +1,22 @@
+---
+import Social from "./Social.astro";
+
+const platform = "github";
+const username = "boomxy";
+---
+
+<footer>
+    <Social platform={platform} username={username} /> |
+    <Social platform="X.com" username={username} /> |
+    <Social platform="WeChat" username={username} />
+</footer>
+
+
+<!-- 样式 -->
+<style>
+    footer {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+</style>
