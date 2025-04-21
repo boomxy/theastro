@@ -1,0 +1,71 @@
+---
+import { getCollection } from "astro:content";
+import BlogPost from "../../components/BlogPost.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    // const allPosts = Object.values(
+    //     import.meta.glob("../posts/*.md", { eager: true }),
+    // );
+    const allPosts = await getCollection("blog");
+
+    
+    // version 2
+    // const uniqueTags = [
+    //     ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+    // ];
+
+    // version 3
+    const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post: any) =>
+            post.frontmatter.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+// 关联 version 1
+// const filteredPosts = posts.filter((post: any) =>
+//     post.frontmatter.tags?.includes(tag),
+// );
+---
+
+<Layout pageTitle={tag}>
+    <p>包含「{tag}」标签的文章</p>
+    <!-- <ul>
+        {
+            filteredPosts.map((post: any) => (
+                <li>
+                    <a href={post.url}>{post.frontmatter.title}</a>
+                </li>
+            ))
+        }
+    </ul> -->
+    <!-- version 1 -->
+    <!-- <ul>
+        {
+            filteredPosts.map((post: any) => (
+                <BlogPost url={post.url} title={post.frontmatter.title} />
+            ))
+        }
+    </ul> -->
+
+    <!-- version 2 -->
+    <ul>
+        {
+            posts.map((post: any) => (
+                // <BlogPost url={post.url} title={post.frontmatter.title} />
+                <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+
+            ))
+        }
+    </ul>
+</Layout>
