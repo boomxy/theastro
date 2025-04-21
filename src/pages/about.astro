@@ -1,0 +1,72 @@
+---
+title: "关于我";
+description: "关于我";
+import Layout from "../layouts/Layout.astro";
+
+const identity = {
+    firstName: "Sarah",
+    country: "Canada",
+    occupation: "Technical Writer",
+    hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+const skillColor = "navy"; // 0. 必须在这里定义变量 （关联下边的 2.3）
+---
+
+<Layout>
+    <main>
+        <h1>关于我</h1>
+        <h2>……和我的新 Astro 网站！</h2>
+        <p>Here are a few facts about me:</p>
+        {happy && <p>I am happy to be 学习 Astro!</p>}
+
+        {finished && <p>I finished 完成 this tutorial!</p>}
+
+        {
+            goal === 3 ? (
+                <p>My goal is to finish 天 in 3 days.</p>
+            ) : (
+                <p>My goal is not 3 days 天天.</p>
+            )
+        }
+
+        <ul>
+            <li>My name is {identity.firstName}.</li>
+            <li>
+                I live in {identity.country} and I work as a {
+                    identity.occupation
+                }.
+            </li>
+            {
+                identity.hobbies.length >= 2 && (
+                    <li>
+                        Two of my hobbies are: {identity.hobbies[0]} and{" "}
+                        {identity.hobbies[1]}
+                    </li>
+                )
+            }
+        </ul>
+        <p>My skills are:</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+    </main>
+</Layout>
+
+<style define:vars={{skillColor}}>  // 1. 必须在这里定义变量
+
+    h1 {
+      color: purple;
+      font-size: 4rem;
+    }
+    .skill {
+      color: green;
+      color: var(--skillColor); // 2. 才能在这里使用变量，覆盖了上边的 color: green;
+      font-weight: bold;
+    }
+  </style>
