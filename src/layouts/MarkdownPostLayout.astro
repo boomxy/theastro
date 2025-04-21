@@ -1,13 +1,15 @@
 ---
 const { frontmatter } = Astro.props;
-import Footer from "../components/Footer.astro";
+// import Footer from "../components/Footer.astro";
+import Layout from "./Layout.astro";
 ---
 
-<meta charset="utf-8" />
-<h1>{frontmatter.title}</h1>
-<p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
-<p><em>{frontmatter.description}</em></p>
-<p>作者：{frontmatter.author}</p>
-<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-<slot />
-<Footer />
+<Layout pageTitle={frontmatter.title}>
+    <!-- <meta charset="utf-8" /> -->
+    <!-- <h1>{frontmatter.title}</h1> -->
+    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <p>作者：{frontmatter.author}</p>
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <slot />
+</Layout>
