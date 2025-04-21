@@ -1,10 +1,20 @@
 ---
-title: "Blog";
+title: "我的 Astro 学习博客";
 description: "This is my learning blog";
 import Layout from "../layouts/Layout.astro";
+
+import BlogPost from "../components/BlogPost.astro";
+
+const allPosts = Object.values(
+    import.meta.glob("../posts/*.md", {
+        eager: true,
+    }),
+);
+const pageTitle = "我的 Astro 学习博客";
+
 ---
 
-<Layout>
+<Layout pageTitle={pageTitle}>
     <main>
         <h1>My Astro Learning Blog</h1>
         <p>This is where I will post about my journey learning Astro.</p>
@@ -12,6 +22,21 @@ import Layout from "../layouts/Layout.astro";
             <li><a href="/posts/post-1/">Post 1</a></li>
             <li><a href="/posts/post-2/">Post 2</a></li>
             <li><a href="/posts/post-3/">Post 3</a></li>
+        </ul>
+
+        <hr />
+        <h2>All Posts</h2>
+        <ul>
+            <!-- {allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)} -->
+
+            {
+                allPosts.map((post: any) => (
+                    <BlogPost
+                        title={post.frontmatter.title}
+                        url={post.frontmatter.slug}
+                    />
+                ))
+            }
         </ul>
     </main>
 </Layout>
