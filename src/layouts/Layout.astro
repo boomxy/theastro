@@ -1,6 +1,11 @@
 ---
 import Footer from "../components/Footer.astro";
-import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
+
+import '../styles/global.css'; // 导入全局样式表
+
+// import Navigation from "../components/Navigation.astro";
+
 ---
 
 <!doctype html>
@@ -13,9 +18,8 @@ import Navigation from "../components/Navigation.astro";
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<header>
-			<Navigation />  <!-- Components -->
-		</header>
+			<!-- <Navigation /> // 被 Header 取代 Components   --> 
+		<Header />
 		<slot />
 		
 		<Footer /> <!-- Components -->
