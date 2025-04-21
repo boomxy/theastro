@@ -3,6 +3,8 @@ title: "关于我";
 description: "关于我";
 import Layout from "../layouts/Layout.astro";
 
+const pageTitle = "关于我";
+
 const identity = {
     firstName: "Sarah",
     country: "Canada",
@@ -20,7 +22,7 @@ const skillColor = "navy"; // 0. 必须在这里定义变量 （关联下边的 
 
 <Layout>
     <main>
-        <h1>关于我</h1>
+        <h1>{pageTitle}</h1>
         <h2>……和我的新 Astro 网站！</h2>
         <p>Here are a few facts about me:</p>
         {happy && <p>I am happy to be 学习 Astro!</p>}
