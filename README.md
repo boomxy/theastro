@@ -46,3 +46,7 @@ pnpm create astro@latest -- --template basics
 ## 👀 想要学习更多？
 
 请随时查看 [我们的文档](https://docs.astro.build) 或跳转到我们的 [Discord服务器](https://astro.build/chat).
+
+## 🔚
+
+---
